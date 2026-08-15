@@ -304,7 +304,7 @@
       <div class="prod-img"><img src="tornado.png" alt="Scooter Tornado" loading="lazy"></div>
       <div class="prod-body">
         <span class="prod-cat">Motos y Vehículos</span>
-        <h3>Motorina Topmaq<h3>
+        <h3>Motorina Topmaq</h3>
         <ul class="prod-specs">
           <li>Precio: USD 3,000</li>
           <li>Motor: 3000 W brushless (marca Topmaq)</li>
@@ -644,6 +644,17 @@
   });
 
   applyFilter(initialCat);
+
+  // Asigna a cada botón de WhatsApp el mensaje con el nombre del producto
+  document.querySelectorAll('.prod-card').forEach(function(card){
+    var titleEl = card.querySelector('.prod-body h3');
+    var link = card.querySelector('a.prod-cta');
+    if (!titleEl || !link) return;
+    var name = (titleEl.textContent || '').trim().replace(/\s+/g, ' ');
+    if (!name) return;
+    var message = 'Hola, me interesa el producto ' + name + '. ¿Me puede explicar cómo sería el proceso del envío y el contrato?';
+    link.href = 'https://wa.me/13057212035?text=' + encodeURIComponent(message);
+  });
 </script>
 
 </body>
